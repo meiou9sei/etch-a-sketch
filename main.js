@@ -1,13 +1,16 @@
 //hardcode values to release later
-const pixelCount = 16; //default width of canvas
+const DEFAULTPIXELCOUNT = 16; //default width of canvas
 const MAXCANVASLENGTH = 128; //maximum width of canvas
+const DEFAULTPRIMARYCOLOR = document.querySelector("#primaryColor").value;
+const DEFAULTSECONDARYCOLOR = document.querySelector("#secondaryColor").value;
 
 main();
 
 
 function main() {
-    createGrid(pixelCount);
+    createGrid(DEFAULTPIXELCOUNT);
     createMenu();
+    
 }
 
 function createGrid(pixelCount) {
@@ -21,14 +24,24 @@ function createGrid(pixelCount) {
         canvas.appendChild(document.createElement('div'));
     }
 
-    //hover effect, changes div color when mouse hovered over
+    //set canvas color to secondaryColor
     const canvasPixels = document.querySelectorAll("div.EAS-container > *");
-    canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.classList.add("hoveredDiv")}));
+    canvasPixels.forEach(e => e.style.backgroundColor = document.querySelector("#secondaryColor").value);
+    console.log(document.querySelector("#secondaryColor").value);
 
+    draw(DEFAULTPRIMARYCOLOR);
 }
 
 function createMenu() {
-    //clear canvas button
+    clearCanvasBtn(); //clear canvas, create new dimension
+    primaryColorBtn(); //select primary color
+
+
+}
+
+
+// MENU BUTTONS //
+function clearCanvasBtn() {
     const clearBtn = document.querySelector("#clear-btn");
 
     clearBtn.addEventListener('click', function() {
@@ -40,10 +53,24 @@ function createMenu() {
         }
         else {
             createGrid(input);
-
-            //removes any hoveredDiv classes if already applied (for reset button), IF cancel is not pressed
-            const canvasPixels = document.querySelectorAll("div.EAS-container > *");
-            canvasPixels.forEach(e => e.classList.remove("hoveredDiv"));
         }
     });
+}
+
+function primaryColorBtn() {
+
+    const primaryColor = document.querySelector("#primaryColor");
+
+    primaryColor.addEventListener("input", function() {
+        draw(primaryColor.value);
+    });
+
+    
+}
+
+function draw(color) {
+    //hover effect, changes div color when mouse hovered over
+    const canvasPixels = document.querySelectorAll("div.EAS-container > *");
+    console.log(canvasPixels);
+    canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.style.backgroundColor = color}));    
 }

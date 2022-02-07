@@ -61,7 +61,8 @@ table {
 /* FONT */
 body {
     font-family: 'Shadows Into Light', cursive;
-    background-color: var(--mainDark); 
+    background-color: var(--mainDark);
+    color: var(--altLight); 
 }
 
 .title {
@@ -93,14 +94,25 @@ a:hover {
     gap: 20px;
 }
 
+.main-container {
+    display: flex;
+    gap: 50px;
+}
+
+.menu-container {
+    flex-shrink: 1;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* EAS (etch-a-sketch) GRID */
 .EAS-container {
     display: grid;
     border: 4px solid var(--mainLight);
     height: 35vw;
     width: 35vw;
-}
 
-.hoveredDiv {
-    background-color: orangered;
+    flex-shrink: 5;
 }
