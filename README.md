@@ -15,3 +15,4 @@ TODO:
 - create save picture function (is that even possible?) - can save pixel png original size or blown up 
 - create a shader/lighter function
 - stylize all buttons
+
