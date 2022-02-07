@@ -1,3 +1,6 @@
+//tried to make it so it only draws when mousedown+mouseover, and turns off upon mouseup or mouseout. 
+//Couldn't figure it out so will revisit this in the future, maybe, and keep on learning javascript for now
+
 # etch-a-sketch
 etch-a-sketch learning project from foundations course on theodinproject.com
 

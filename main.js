@@ -21,7 +21,8 @@ function createGrid(pixelCount) {
     canvas.style.gridTemplateRows = `repeat(${pixelCount}, minmax(0, 1fr))`;
     totalPixelCount = pixelCount * pixelCount;
     for(let i = 0; i < totalPixelCount; i++) {
-        canvas.appendChild(document.createElement('div'));
+        const canvasPixel = document.createElement('div'));
+        canvasPixel.addEventListener('mouseover', draw(document.querySelector("#primaryColor").value))
     }
 
     //set canvas color to secondaryColor
@@ -71,6 +72,26 @@ function primaryColorBtn() {
 function draw(color) {
     //hover effect, changes div color when mouse hovered over
     const canvasPixels = document.querySelectorAll("div.EAS-container > *");
-    console.log(canvasPixels);
-    canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.style.backgroundColor = color}));    
+    const megaContainer = document.querySelector(".mega-container");
+
+    canvasPixels.forEach(e => e.addEventListener('mousemove', inkIt(color)));   
+}
+
+//if draw(), draws only if mousedown and 
+function inkIt(color) {
+    const canvasPixels = document.querySelectorAll("div.EAS-container > *");
+    const megaContainer = document.querySelector(".mega-container");
+
+    let ink = false; //if ink is true, mouse draws on canvas
+
+    canvasPixels.forEach(e => e.addEventListener('mousedown', function() {ink = true;}));
+    megaContainer.addEventListener('mouseup', () => ink = false);
+    megaContainer.addEventListener('mouseout', () => ink = false);
+    console.log("ink is " + ink);
+
+    if (ink) {
+        console.log("Hey!");
+    }
+    canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.style.backgroundColor = color}));
+
 }
