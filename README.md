@@ -5,4 +5,13 @@ WORK IN PROGRESS (as of 2022 feb 6): check out latest of master branch at: https
 
 TODO: 
 - create color picker
-- create 
+- create canvas color setter
+- create an eraser (that uses "background color")
+- create rainbow mode
+- have mspaint default colors as selectable colors
+- have color fill
+- create size picker
+- make canvas size a slider with a "new canvas with new dimension" button
+- create save picture function (is that even possible?) - can save pixel png original size or blown up 
+- create a shader/lighter function
+- stylize all buttons
