@@ -66,6 +66,8 @@ function toolPicker() {
     secondaryColor.addEventListener("input", function() {draw()});
 }
 
+// DRAWING FUNCTIONS //
+
 function draw() {
     const pencil = document.querySelector("#pencil");
     const eraser = document.querySelector("#eraser");
@@ -87,6 +89,8 @@ function draw() {
         color = primaryColor;
     else if (eraser.checked)
         color = secondaryColor;
+    else
+        return;
     
     //console.log(color);
 
@@ -94,3 +98,21 @@ function draw() {
     const canvasPixels = document.querySelectorAll("div.EAS-container > *");
     canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.style.backgroundColor = color}));    
 }
+
+// JUST FOR FUN //
+footer();
+function footer() {
+    const footerText = document.querySelector(".footer-text");
+    const seeTheCode = document.querySelector("#see-the-code");
+
+    const uwu = document.createTextNode("( ⁄u⁄w⁄u⁄ )");
+
+    seeTheCode.addEventListener("mouseover", function() {
+        footerText.appendChild(uwu);
+    });
+    seeTheCode.addEventListener("mouseout", function() {
+        footerText.removeChild(uwu);
+    });
+}
+
+//mouseover, mouseout

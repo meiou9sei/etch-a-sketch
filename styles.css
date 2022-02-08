@@ -54,15 +54,17 @@ table {
     --mainDark: #092327;
     --main: #0B5351;
     --mainLight: #00A9A5;
-    --altDark: #4e8098;
+    --alt: coral;
     --altLight: #90c2e7;
 }
 
 /* FONT */
-body {
+body,
+button {
     font-family: 'Shadows Into Light', cursive;
     background-color: var(--mainDark);
     color: var(--altLight); 
+    font-size: 16px;
 }
 
 .title {
@@ -74,6 +76,8 @@ body {
 .subtitle {
     font-size: 24px;
     color: var(--altLight);
+    margin: 0 10px;
+    text-align: center;
 }
 
 a {
@@ -82,7 +86,34 @@ a {
 }
 
 a:hover {
-    color: coral;
+    color: var(--alt);
+    cursor: pointer;
+}
+
+button {
+    background-color: var(--mainLight);
+    border: none;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--alt);
+    cursor: pointer;
+}
+
+input:hover,
+label:hover {
+    cursor: pointer;
+}
+
+.warning {
+    color: var(--alt);
+}
+ 
+p {
+    line-height: 125%;
 }
 
 /* CONTAINERS */
@@ -107,6 +138,10 @@ a:hover {
     gap: 10px;
 }
 
+.end-text {
+    margin-top: auto;
+}
+
 .colorPickers {
     display: flex;
     flex-direction: column;
@@ -117,8 +152,27 @@ a:hover {
 .EAS-container {
     display: grid;
     border: 4px solid var(--mainLight);
-    height: 35vw;
-    width: 35vw;
+    height: 40vw;
+    width: 40vw;
+
+    max-width: 70vh;
+    max-height: 70vh;
 
     flex-shrink: 5;
+}
+
+/* JUST FOR FUN */
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: hsl(0, 100%, 50%, 5%);
+    text-align: center;
+    font-size: 72px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#see-the-code {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 16px;
 }
