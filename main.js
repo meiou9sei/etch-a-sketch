@@ -1,8 +1,6 @@
 //hardcode values to release later
 const DEFAULTPIXELCOUNT = 16; //default width of canvas
 const MAXCANVASLENGTH = 128; //maximum width of canvas
-const DEFAULTPRIMARYCOLOR = document.querySelector("#primaryColor").value;
-const DEFAULTSECONDARYCOLOR = document.querySelector("#secondaryColor").value;
 
 main();
 
@@ -10,7 +8,6 @@ main();
 function main() {
     createGrid(DEFAULTPIXELCOUNT);
     createMenu();
-    
 }
 
 function createGrid(pixelCount) {
@@ -27,16 +24,14 @@ function createGrid(pixelCount) {
     //set canvas color to secondaryColor
     const canvasPixels = document.querySelectorAll("div.EAS-container > *");
     canvasPixels.forEach(e => e.style.backgroundColor = document.querySelector("#secondaryColor").value);
-    console.log(document.querySelector("#secondaryColor").value);
+    //console.log(document.querySelector("#secondaryColor").value);
 
-    draw(DEFAULTPRIMARYCOLOR);
+    draw();
 }
 
 function createMenu() {
     clearCanvasBtn(); //clear canvas, create new dimension
-    primaryColorBtn(); //select primary color
-
-
+    toolPicker(); //adds .addEventListener to tools to draw() with new color when selected
 }
 
 
@@ -44,12 +39,13 @@ function createMenu() {
 function clearCanvasBtn() {
     const clearBtn = document.querySelector("#clear-btn");
 
+    //creates new canvas
     clearBtn.addEventListener('click', function() {
         let input = prompt(`How many pixels would you like on a side? Max ${MAXCANVASLENGTH}`, 16);
         if (input === null)
             return;
-        else if (input > MAXCANVASLENGTH) {
-            alert("Error: Max length of canvas is 128")
+        else if (input > MAXCANVASLENGTH || input <= 0) {
+            alert(`Error: Canvas length must be within 1 and ${MAXCANVASLENGTH}`)
         }
         else {
             createGrid(input);
@@ -57,20 +53,44 @@ function clearCanvasBtn() {
     });
 }
 
-function primaryColorBtn() {
-
+function toolPicker() {
+    const pencil = document.querySelector("#pencil");
+    const eraser = document.querySelector("#eraser");
     const primaryColor = document.querySelector("#primaryColor");
+    const secondaryColor = document.querySelector("#secondaryColor");
 
-    primaryColor.addEventListener("input", function() {
-        draw(primaryColor.value);
-    });
-
-    
+    //adds event listeners that activate upon selection of new tool or color to call draw()
+    pencil.addEventListener("click", function() {draw()});
+    eraser.addEventListener("click", function() {draw()});
+    primaryColor.addEventListener("input", function() {draw()});
+    secondaryColor.addEventListener("input", function() {draw()});
 }
 
-function draw(color) {
+function draw() {
+    const pencil = document.querySelector("#pencil");
+    const eraser = document.querySelector("#eraser");
+    const primaryColor = document.querySelector("#primaryColor").value;
+    const secondaryColor = document.querySelector("#secondaryColor").value;
+
+    let color = null;
+
+    /*
+    console.log(pencil.checked);
+    console.log(eraser.checked);
+    
+    console.log(pencil.value);
+    console.log(eraser.value);
+    */
+
+    //checks which tool is selected (pencil/eraser = primary/secondary) for color
+    if (pencil.checked)
+        color = primaryColor;
+    else if (eraser.checked)
+        color = secondaryColor;
+    
+    //console.log(color);
+
     //hover effect, changes div color when mouse hovered over
     const canvasPixels = document.querySelectorAll("div.EAS-container > *");
-    console.log(canvasPixels);
     canvasPixels.forEach(e => e.addEventListener('mouseover', function() {e.style.backgroundColor = color}));    
 }

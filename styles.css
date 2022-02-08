@@ -107,6 +107,12 @@ a:hover {
     gap: 10px;
 }
 
+.colorPickers {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 /* EAS (etch-a-sketch) GRID */
 .EAS-container {
     display: grid;
