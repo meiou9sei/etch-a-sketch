@@ -1,7 +1,7 @@
 # etch-a-sketch
 etch-a-sketch learning project from foundations course on theodinproject.com
 
-check out latest of master branch at: https://meiousei9.github.io/etch-a-sketch/
+check out latest of master branch at: https://meiou9sei.github.io/etch-a-sketch/
 
 
 TODO for future:
